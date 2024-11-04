@@ -10,7 +10,14 @@ if not vim.uv.fs_stat(lazypath) then
 end
 
 vim.opt.rtp:prepend(lazypath)
-
+vim.opt.scrolloff = 10
+vim.opt.relativenumber = true -- Enable relative number
+vim.opt.number = true -- Also show the current line number
+vim.opt.expandtab = true -- Convert tabs to spaces
+vim.opt.smartindent = true -- Enable smart indentation
+vim.opt.shiftwidth = 4 -- Number of spaces for each indentation level
+vim.opt.tabstop = 4 -- Number of spaces a tab counts for
+vim.opt.softtabstop = 4 -- Number of spaces a tab key inserts
 local lazy_config = require "configs.lazy"
 
 -- load plugins
@@ -21,7 +28,12 @@ require("lazy").setup({
     branch = "v2.5",
     import = "nvchad.plugins",
   },
-
+  { "nvchad/volt", lazy = true },
+  {
+    "nvchad/minty",
+    cmd = { "Shades", "Huefy" },
+  },
+  { "nvchad/menu", lazy = true },
   { import = "plugins" },
 }, lazy_config)
 
