@@ -1,4 +1,18 @@
 return {
+  "nvim-lua/plenary.nvim",
+  {
+    "nvchad/base46",
+    build = function()
+      require("base46").load_all_highlights()
+    end,
+  },
+  {
+    "nvchad/ui",
+    lazy = false,
+    config = function()
+      require "nvchad"
+    end,
+  },
   {
     "stevearc/conform.nvim",
     -- event = 'BufWritePre', -- uncomment for format on save
@@ -77,20 +91,23 @@ return {
       require("autoclose").setup()
     end,
   },
- {
-   "nvchad/ui",
-    config = function()
-      require "nvchad"
-    end
- },
-
- {
-    "nvchad/base46",
-    lazy = true,
-    build = function()
-      require("base46").load_all_highlights()
-    end,
- },
-
-
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    lazy=false,
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    },
+    keys = {
+      {
+        "<leader>=",
+        function()
+          require("which-key").show({ global = false })
+        end,
+        desc = "Buffer Local Keymaps (which-key)",
+      },
+    },
+  }
 }
