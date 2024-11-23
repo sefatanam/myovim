@@ -125,5 +125,14 @@ return {
       enable_close_on_slash = false -- Auto close on trailing </
     },
 
-  }
+  },
+  {
+    "roobert/tailwindcss-colorizer-cmp.nvim",
+    -- optionally, override the default options:
+    config = function()
+      require("tailwindcss-colorizer-cmp").setup({
+        color_square_width = 2,
+      })
+    end
+  },
 }
