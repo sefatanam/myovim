@@ -28,12 +28,10 @@ require("lazy").setup({
     branch = "v2.5",
     import = "nvchad.plugins",
   },
-  { "nvchad/volt",     lazy = true },
-  {
-    "nvchad/minty",
-    cmd = { "Shades", "Huefy" },
-  },
-  { "nvchad/menu",     lazy = false },
+  { "nvchad/volt",             lazy = true },
+  { "nvchad/minty",            cmd = { "Shades", "Huefy" }, },
+  { "nvchad/menu",             lazy = false },
+  { "Bekaboo/deadcolumn.nvim", lazy = false },
   { import = "plugins" },
   {
     'Bekaboo/dropbar.nvim',
@@ -68,10 +66,9 @@ require("lazy").setup({
     opts = {}                          -- your configuration
   },
   {
-    -- Calls `require('slimline').setup({})`
-    "sschleemilch/slimline.nvim",
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
     lazy = false,
-    opts = {}
   },
 
 }, lazy_config)
@@ -85,8 +82,7 @@ dofile(vim.g.base46_cache .. "statusline")
 
 require "options"
 require "nvchad.autocmds"
-require('slimline').setup({})
-
+require("lualine").setup({ options = { theme = "nord" } })
 vim.schedule(function()
   require "mappings"
 end)
