@@ -1,5 +1,6 @@
 return {
   "nvim-lua/plenary.nvim",
+  "joeveiga/ng.nvim",
   {
     "nvchad/base46",
     build = function()
@@ -94,7 +95,7 @@ return {
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
-    lazy=false,
+    lazy = false,
     opts = {
       -- your configuration comes here
       -- or leave it empty to use the default settings
@@ -109,5 +110,20 @@ return {
         desc = "Buffer Local Keymaps (which-key)",
       },
     },
+  },
+  {
+    "windwp/nvim-ts-autotag",
+    lazy = false,
+    event = "InsertEnter",
+    config = function()
+      require("nvim-ts-autotag").setup()
+    end,
+    opts = {
+      -- Defaults
+      enable_close = true,          -- Auto close tags
+      enable_rename = true,         -- Auto rename pairs of tags
+      enable_close_on_slash = false -- Auto close on trailing </
+    },
+
   }
 }
