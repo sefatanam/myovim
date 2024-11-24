@@ -135,4 +135,55 @@ return {
       })
     end
   },
+  {
+    "williamboman/mason.nvim",
+    lazy = false,
+    config = function()
+      require("mason").setup()
+    end,
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    lazy = false,
+    config = function()
+      require("mason-lspconfig").setup(
+        {
+          ensure_installed = { "html", "cssls", "svelte", "angularls", "ts_ls", "eslint", "jsonls", "gopls", "rust_analyzer" },
+
+        }
+      )
+    end,
+  },
+  {
+    "neovim/nvim-lspconfig",
+    lazy = false,
+  },
+  {
+    "nvim-telescope/telescope-ui-select.nvim",
+    lazy = false,
+    -- This is your opts table
+    require("telescope").setup {
+      extensions = {
+        ["ui-select"] = {
+          require("telescope.themes").get_dropdown {
+            -- even more opts
+          }
+
+          -- pseudo code / specification for writing custom displays, like the one
+          -- for "codeactions"
+          -- specific_opts = {
+          --   [kind] = {
+          --     make_indexed = function(items) -> indexed_items, width,
+          --     make_displayer = function(widths) -> displayer
+          --     make_display = function(displayer) -> function(e)
+          --     make_ordinal = function(e) -> string
+          --   },
+          --   -- for example to disable the custom builtin "codeactions" display
+          --      do the following
+          --   codeactions = false,
+          -- }
+        }
+      }
+    }
+  }
 }
