@@ -77,15 +77,7 @@ local mason_registry = require("mason-registry")
 
 -- List of servers to set up
 local servers = {
-  "html",
-  "cssls",
-  "ts_ls",
-  "gopls",
-  "rust_analyzer",
-  "jsonls",
-  "svelte",
-  "angularls",
-  "eslint"
+  "html", "cssls", "svelte", "angularls", "ts_ls", "eslint", "jsonls", "gopls", "rust_analyzer"
 }
 
 -- LSP setup loop for multiple servers
