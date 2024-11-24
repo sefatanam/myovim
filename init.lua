@@ -18,6 +18,21 @@ vim.opt.smartindent = true    -- Enable smart indentation
 vim.opt.shiftwidth = 4        -- Number of spaces for each indentation level
 vim.opt.tabstop = 4           -- Number of spaces a tab counts for
 vim.opt.softtabstop = 4       -- Number of spaces a tab key inserts
+
+
+vim.opt.list = true
+vim.opt.listchars:append("space:.")
+
+vim.diagnostic.config({
+  virtual_text = true,     -- Show inline diagnostics
+  signs = true,            -- Show signs in the gutter
+  underline = true,        -- Underline the diagnostic text
+  update_in_insert = true, -- Update diagnostics in insert mode
+  severity_sort = true,    -- Sort diagnostics by severity
+})
+
+
+
 local lazy_config = require "configs.lazy"
 
 -- load plugins
@@ -70,7 +85,7 @@ require("lazy").setup({
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     lazy = false,
   },
-
+  { 'akinsho/toggleterm.nvim', version = "*", config = true }
 }, lazy_config)
 
 require("cmp").config.formatting = {
@@ -86,3 +101,5 @@ require("lualine").setup({ options = { theme = "nord" } })
 vim.schedule(function()
   require "mappings"
 end)
+
+require("telescope").load_extension("ui-select")
