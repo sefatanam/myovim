@@ -55,7 +55,7 @@ return {
         suggestion = {
           enabled = true,
           auto_accept = false,
-          auto_trigger = false,
+          auto_trigger = true,
           debounce = 65,
           keymap = {
             accept = "<Tab>",
@@ -216,12 +216,12 @@ return {
               -- Update the command with new configuration if needed
               new_config.cmd = cmd
             end,
-            root_dir = require('lspconfig').util.root_pattern('angular.json', '.git'), -- Detect Angular projects
-            filetypes = { 'typescript', 'html', 'typescriptreact' },                   -- File types for Angular
-            capabilities = require('nvchad.configs.lspconfig').capabilities,           -- Capabilities, like autocompletion
-            on_attach = require('nvchad.configs.lspconfig').on_attach,                 -- Attach custom LSP behaviors
+            root_dir = lspconfig.util.root_pattern('angular.json', '.git'),                           -- Detect Angular projects
+            filetypes = { "typescript", "html", "typescriptreact", "typescript.tsx", "htmlangular" }, -- File types for Angular
+            capabilities = require('nvchad.configs.lspconfig').capabilities,                          -- Capabilities, like autocompletion
+            on_attach = require('nvchad.configs.lspconfig').on_attach,                                -- Attach custom LSP behaviors
           }
-          require('lspconfig').angularls.setup(config)
+          lspconfig.angularls.setup(config)
         end,
       })
     end,
@@ -277,7 +277,6 @@ return {
 
     config = function()
       require('auto-session').setup {
-        auto_restore_last_session = true
       }
     end
   }
