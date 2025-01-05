@@ -43,7 +43,11 @@ vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 vim.keymap.set("n", "I", vim.lsp.buf.implementation, opts)
 
 
-vim.api.nvim_set_keymap('n', '<leader>lg', ':lua LazygitToggle()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>gg', ':lua LazygitToggle()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>q', ':Telescope quickfix<CR>', { noremap = true, silent = false })
+vim.api.nvim_set_keymap('n', '<leader>lg', ':Telescope live_grep<CR>', { noremap = true, silent = false })
+vim.api.nvim_set_keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<leader>ca", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", { noremap = true, silent = true })
 
 function LazygitToggle()
   local Terminal = require("toggleterm.terminal").Terminal
