@@ -103,3 +103,10 @@ vim.schedule(function()
 end)
 
 require("telescope").load_extension("ui-select")
+-- Background transparent
+vim.cmd [[
+  highlight Normal guibg=none
+  highlight NonText guibg=none
+  highlight Normal ctermbg=none
+  highlight NonText ctermbg=none
+]]

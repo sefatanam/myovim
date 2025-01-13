@@ -1,6 +1,6 @@
 return {
   "nvim-lua/plenary.nvim",
-  "joeveiga/ng.nvim",
+  { "joeveiga/ng.nvim", lazy = false },
   {
     "nvchad/base46",
     build = function()
@@ -16,7 +16,6 @@ return {
   },
   {
     "stevearc/conform.nvim",
-    -- event = 'BufWritePre', -- uncomment for format on save
     opts = require "configs.conform",
   },
   {
@@ -142,9 +141,6 @@ return {
     config = function()
       local mason_lspconfig = require("mason-lspconfig")
       local lspconfig = require("lspconfig")
-      local registry = require("mason-registry")
-      local path = require("mason-core.path")
-      local functional = require("mason-core.functional")
 
       mason_lspconfig.setup({
         ensure_installed = {
@@ -161,7 +157,7 @@ return {
           "cmake",
           "astro",
           "bashls",
-          "lua_ls",
+          "lua_ls"
         },
       })
       -- Setup LSP servers
@@ -296,5 +292,43 @@ return {
       require('auto-session').setup {
       }
     end
-  }
+  },
+  -- Add nvim-tree configuration
+  {
+    "nvim-tree/nvim-tree.lua",
+    lazy = false,
+    config = function()
+      require("nvim-tree").setup({
+        view = {
+          width = 50,                         -- Default width for the tree
+          preserve_window_proportions = true, -- Keep window proportions when resizing
+        },
+        auto_reload_on_write = true,          -- Reload tree when files are written
+        update_focused_file = {
+          enable = true,                      -- Update the focused file
+          update_cwd = true,                  -- Update the working directory
+        },
+        git = {
+          enable = true, -- Show git status in the tree
+        },
+      })
+
+      -- Persist nvim-tree width across sessions
+      -- vim.api.nvim_create_autocmd("VimEnter", {
+      --   callback = function()
+      --     local width = vim.g.nvim_tree_width
+      --     if width then
+      --       vim.cmd("vertical resize " .. width)
+      --     end
+      --   end
+      -- })
+      --
+      -- vim.api.nvim_create_autocmd("WinLeave", {
+      --   pattern = "NvimTree*",
+      --   callback = function()
+      --     vim.g.nvim_tree_width = vim.api.nvim_win_get_width(0)
+      --   end
+      -- })
+    end,
+  },
 }
