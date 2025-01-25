@@ -15,12 +15,5 @@ for _, file in ipairs(plugin_files) do
     end
   end
 end
--- Background transparent
--- vim.cmd [[
---   highlight Normal guibg=none
---   highlight NonText guibg=none
---   highlight Normal ctermbg=none
---   highlight NonText ctermbg=none
--- ]]
 
 return M
