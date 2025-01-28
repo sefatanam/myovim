@@ -10,12 +10,6 @@ return {
     end,
   },
   {
-    "neovim/nvim-lspconfig",
-    config = function()
-      require "configs.lspconfig"
-    end,
-  },
-  {
     "nvchad/ui",
     config = function()
       require "nvchad"
