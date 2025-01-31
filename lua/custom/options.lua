@@ -18,7 +18,12 @@ vim.diagnostic.config({
   update_in_insert = true, -- Update diagnostics in insert mode
   severity_sort = true,    -- Sort diagnostics by severity
 })
+-- disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
+-- optionally enable 24-bit colour
+vim.opt.termguicolors = true
 
 -- Background transparent
 -- vim.cmd [[

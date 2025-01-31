@@ -1,8 +1,16 @@
 return {
   "nvim-tree/nvim-tree.lua",
-  lazy = false,
   config = function()
     require("nvim-tree").setup({
+      sort = {
+        sorter = "case_sensitive",
+      },
+      renderer = {
+        group_empty = true,
+      },
+      filters = {
+        dotfiles = true,
+      },
       view = {
         width = 50,                         -- Default width for the tree
         preserve_window_proportions = true, -- Keep window proportions when resizing

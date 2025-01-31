@@ -1,3 +1,4 @@
+local vim = vim
 vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
 vim.g.mapleader = " "
 
@@ -12,9 +13,6 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 local lazy_config = require "configs.lazy"
-require "custom.autocmds"
-require "custom.options"
-
 -- load plugins
 require("lazy").setup({
   { import = "plugins" },
@@ -22,13 +20,14 @@ require("lazy").setup({
   { import = "custom.plugins" }
 }, lazy_config)
 
-require("cmp").config.formatting = {
-  format = require("tailwindcss-colorizer-cmp").formatter
-}
+-- require("cmp").config.formatting = {
+--   format = require("tailwindcss-colorizer-cmp").formatter
+-- }
 -- load theme
 dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
 
+require("custom.options")
 require "options"
 require "nvchad.autocmds"
 
@@ -36,5 +35,3 @@ require "nvchad.autocmds"
 vim.schedule(function()
   require "mappings"
 end)
-require("telescope").load_extension("ui-select")
-require("lualine").setup({ options = { theme = "nord" } })
