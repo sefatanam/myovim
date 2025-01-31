@@ -22,5 +22,6 @@ M.base46 = {
 --          lazyload = false
 --      }
 --}
+M.plugins = require("custom.plugins") -- Point to our auto-loader
 
 return M
