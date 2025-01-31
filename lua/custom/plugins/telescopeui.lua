@@ -4,9 +4,7 @@ return
   "nvim-telescope/telescope.nvim", -- Telescope plugin
   cmd = "Telescope",               -- Lazy load on the command
   config = function()
-    require("telescope").setup {
-      -- Telescope setup as shown above
-    }
+    require("telescope").load_extension("ui-select")
   end,
 
   {

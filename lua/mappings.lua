@@ -67,3 +67,6 @@ function LazygitToggle()
   })
   lazygit:toggle()
 end
+
+
+  -- vim.cmd.exec '"normal! \\<RightMouse>"'
